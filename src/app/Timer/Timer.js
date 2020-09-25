@@ -32,13 +32,12 @@ export default class Timer extends React.Component {
       this.setState({
         valueText: this.state.valueText - 1,
       });
-      if (this.state.valueText === 0 || this.state.button==="Start") {
+      if (this.state.valueText === 0 || this.state.button === "Start") {
         this.setState({
           button: "Start",
-          valueText:0
+          valueText: 0,
         });
         clearInterval(mytime);
-        
       }
     }
   }
@@ -50,7 +49,7 @@ export default class Timer extends React.Component {
   };
   render() {
     return (
-      <div className="page">
+      <div className="timerpage">
         <h1>在线倒计时器</h1>
         <div className="timer">
           <div className="control">
@@ -60,12 +59,13 @@ export default class Timer extends React.Component {
               value={this.state.setTime}
               onChange={this.handleChange}
             ></input>
+            <br />
             <button type="button" onClick={() => this.buttonAction()}>
               {this.state.button}
             </button>
           </div>
-          <div className="showdatabar">
-            <input type="text" value={this.state.valueText} readOnly />
+          <div>
+            <input type="text" value={this.state.valueText+"  Seconds"} readOnly className="showdatabar"/>
           </div>
         </div>
         <Link to="/">
